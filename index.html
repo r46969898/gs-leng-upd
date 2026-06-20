@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="de">
-<head>
+<html lang="de"><head>
 <meta charset="utf-8">
-<link rel="icon" href="logo-upd.jpeg">
+<link rel="icon" href="//r46969898.github.io/gs-leng-upd/logo-upd.jpeg">
 <title>Grundschule Lengfeld</title>
 
 <style>
@@ -148,18 +147,22 @@ button {
 #ai-box{
     text-align: left;
 }
+
+#z2{
+    border-radius: 20px;
+}
 </style>
 </head>
 
 <body>
+<h1 id="z2" style="background:#E5EFF9; border: 3px solid black; padding: 10px; margin-bottom: 0px; margin-top: -0px; margin-left: 25px; font-size: 3em;">    <img width="100" height="100" src="https://media.cylex.de/companies/6196/37/logo/logo.jpg" alt="Grundschule Lengfeld Zeichen" id="zeichen" style="margin-bottom: -30px;     border-radius: 20px;"> Grundschule Lengfeld<div style="height: 20px;"></div></h1>
 
-<nav>
+<br><br><hr style="border: 1px clear; width: 100%;"><br><br><nav>
 <button onclick="showSection('home')">Homepage</button>
 <button onclick="showSection('data')">Schuldaten</button>
 <button onclick="showSection('hours')">Öffnungszeiten</button>
 <button onclick="showSection('map')">Anfahrt</button>
 </nav>
-
 
 <div class="container active" id="home">
 <h2>Willkommen</h2>
@@ -192,7 +195,7 @@ button {
 <p>Carl-Orff Straße 6, 97076 Würzburg</p>
 
 <p>
-<a href="https://www.google.com/maps/search/?api=1&query=Carl-Orff-Stra%C3%9Fe+6+97076+W%C3%BCrzburg">
+<a href="https://www.google.com/maps/search/?api=1&amp;query=Carl-Orff-Stra%C3%9Fe+6+97076+W%C3%BCrzburg">
 In Google Maps öffnen
 </a>
 </p>
@@ -204,7 +207,7 @@ In Google Maps öffnen
 <h4>Frag' mir etwas über die Schule.</h4>
   <div id="ai-output"></div>
 
-  <input id="ai-input" type="text" placeholder="Schreibe deine Frage..." style="width: 280px;" />
+  <input id="ai-input" type="text" placeholder="Schreibe deine Frage..." style="width: 280px;">
 
   <button id="ai-send">Senden</button>
 </div>
@@ -291,5 +294,6 @@ aiInput.addEventListener("keydown", (e) => {
 });
 </script>
 
-</body>
-</html>
+
+
+</body></html>
