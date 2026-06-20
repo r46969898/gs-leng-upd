@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="https://media.cylex.de/companies/6196/37/logo/logo.jpg">
+<title>Grundschule Lengfeld</title>
+
+<style>
+body {
+  margin-top: 35px;
+  background-image: url(//grundschule-lengfeld.de/mittwald_system_pages/img/back-gradient.jpg);
+  background-repeat: repeat-x;
+  background-color: #fefeff;
+  font-family: verdana, arial, sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+
+nav {
+  background: #E5EFF9;
+  border: 1.75px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 15px;
+
+  width: 95%;        
+  max-width: 600px;
+}
+
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+button {
+  color: #000;
+  font-weight: bold;
+  background: #ffffff77;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+
+  padding: 6px 10px;
+}
+#ai-btn{
+    border: 2px solid #000;
+      position: fixed !important;
+  right: 75px !important;
+  bottom: 75px !important;
+  font-size: 2em;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.container {
+  display: none;
+  background: #E5EFF9;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1.75px solid black;
+
+  width: 95%;       
+  max-width: 600px;
+
+  margin-bottom: 10px;
+}
+
+.container.active {
+  display: block;
+}
+
+#ai-btn {
+  position: fixed !important;
+  right: 25px !important;
+  bottom: 25px !important;
+
+
+  height: 55px;
+  border-radius: 50px;
+  background: #E5EFF9;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+#ai-box {
+  position: fixed !important;
+  right: 25px !important;
+  bottom: 90px !important;
+
+  width: 300px;
+  height: 400px;
+
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+  display: none;
+  flex-direction: column;
+  padding: 10px;
+  z-index: 9999;
+}
+
+#ai-header {
+  font-weight: bold;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+#ai-output {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+#ai-input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+}
+
+#ai-send {
+  margin-top: 8px;
+  padding: 8px;
+  background: #2b2bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#ai-btn span{
+    background: #0001;
+    border-radius: 300px;
+}
+
+#ai-box{
+    text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<button onclick="showSection('home')">Homepage</button>
+<button onclick="showSection('data')">Schuldaten</button>
+<button onclick="showSection('hours')">Öffnungszeiten</button>
+<button onclick="showSection('map')">Anfahrt</button>
+</nav>
+
+
+<div class="container active" id="home">
+<h2>Willkommen</h2>
+<p>Herzlich willkommen auf der Webseite der Grundschule Lengfeld.</p>
+</div>
+
+
+<div class="container" id="data">
+<h2>Schuldaten</h2>
+<p>Standort: Carl-Orff Straße 6, 97076 Würzburg</p>
+<p>Tel: 0931 271444</p>
+<p>Webseite: <a href="https://grundschule-lengfeld.de">grundschule-lengfeld.de</a></p>
+</div>
+
+
+<div class="container" id="hours">
+<h2>Öffnungszeiten</h2>
+<p>Montag - Donnerstag: 8 - 16 Uhr</p>
+<p>Freitag: 8 - 14 Uhr</p>
+
+<p style="color:#ee2200; font-weight:bold;">
+⚠️ Nicht offen am Samstag oder Sonntag<br>
+<small><small><small>außer besondere Tage</small></small></small>
+</p>
+</div>
+
+
+<div class="container" id="map">
+<h2>Anfahrt</h2>
+<p>Carl-Orff Straße 6, 97076 Würzburg</p>
+
+<p>
+<a href="https://www.google.com/maps/search/?api=1&query=Carl-Orff-Stra%C3%9Fe+6+97076+W%C3%BCrzburg">
+In Google Maps öffnen
+</a>
+</p>
+</div>
+
+<button id="ai-btn">Hilfe <span>💬</span></button>
+<div id="ai-box">
+  <div id="ai-header">Schul-helfer</div>
+<h4>Frag' mir etwas über die Schule.</h4>
+  <div id="ai-output"></div>
+
+  <input id="ai-input" type="text" placeholder="Schreibe deine Frage..." style="width: 280px;" />
+
+  <button id="ai-send">Senden</button>
+</div>
+<script>
+function showSection(id) {
+  let sections = document.querySelectorAll(".container");
+  sections.forEach(sec => sec.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+const aiBtn = document.getElementById("ai-btn");
+const aiBox = document.getElementById("ai-box");
+const aiOutput = document.getElementById("ai-output");
+const aiInput = document.getElementById("ai-input");
+const aiSend = document.getElementById("ai-send");
+
+aiBtn.onclick = () => {
+  aiBox.style.display = (aiBox.style.display === "flex") ? "none" : "flex";
+};
+
+const siteInfo = {
+  home: "Willkommen auf der Webseite der Grundschule Lengfeld.",
+  data: "Carl-Orff Straße 6, 97076 Würzburg. Tel: 0931 271444.",
+  hours: "Mo-Do 8-16 Uhr, Fr 8-14 Uhr. Wochenende geschlossen.",
+  map: "Carl-Orff Straße 6, 97076 Würzburg."
+};
+
+function escapeHTML(str) {
+  return str
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+}
+
+function findAnswer(input) {
+  input = input.toLowerCase();
+
+  if (input.includes("ort") || input.includes("wo") || input.includes("location") || input.includes("where")) {
+    return siteInfo.data;
+  }
+
+  if (input.includes("zeit") || input.includes("wann") || input.includes("open") || input.includes("offen") || input.includes("öffnungszeiten")) {
+    return siteInfo.hours;
+  }
+
+  if (input.includes("fahr") || input.includes("geh") || input.includes("maps") || input.includes("hin") || input.includes("route")) {
+    const mapQuery = siteInfo.map;
+
+    return `
+      <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}" target="_blank">
+        In Google Maps öffnen
+      </a>
+    `;
+  }
+
+  if (input.includes("hallo") || input.includes("hi") || input.includes("hey") || input.includes("moin")) {
+    return "Hallo 👋 Wie kann ich dir helfen?";
+  }
+
+  if (input.includes("wie geht")) {
+    return "Mir geht's gut 😊 Welche Infos brauchst du über die Schule?";
+  }
+
+  return "Ich habe das nicht in meinen Schul-Daten gefunden. Versuche: Ort, Öffnungszeiten oder Anfahrt.";
+}
+
+function askAI() {
+  const question = aiInput.value.trim();
+  if (!question) return;
+
+  let answer = findAnswer(question);
+
+aiOutput.innerHTML += `<div><b>Du:</b> ${escapeHTML(question)}</div><br>`;
+aiOutput.innerHTML += `<div><b>Schul-helfer:</b> ${answer}</div><br>`;
+
+  aiInput.value = "";
+  aiOutput.scrollTop = aiOutput.scrollHeight;
+}
+
+aiSend.onclick = askAI;
+
+aiInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") askAI();
+});
+</script>
+
+</body>
+</html>
