@@ -165,7 +165,7 @@ box-shadow: 5px 5.5px 4px #000b;
 <button onclick="showSection('map')">Anfahrt</button>
 </nav>
 
-<div class="container active" id="home">
+<div class="container" id="home">
 <h2>Willkommen</h2>
 <p>Herzlich willkommen auf der Webseite der Grundschule Lengfeld.</p>
 </div>
@@ -191,7 +191,7 @@ box-shadow: 5px 5.5px 4px #000b;
 </div>
 
 
-<div class="container" id="map">
+<div class="container active" id="map">
 <h2>Anfahrt</h2>
 <p>Carl-Orff Straße 6, 97076 Würzburg</p>
 
@@ -212,6 +212,9 @@ In Google Maps öffnen
 
   <button id="ai-send">Senden</button>
 </div>
+<h3 style="position: fixed; bottom: 10px; left: 10px;">
+⚠️ Hinweis: Diese Website ist nicht offiziell, sondern eine neu gestaltete Version als Idee.
+</h3>
 <script>
 function showSection(id) {
   let sections = document.querySelectorAll(".container");
@@ -294,6 +297,7 @@ aiInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") askAI();
 });
 </script>
+
 
 
 
